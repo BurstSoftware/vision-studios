@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
 from datetime import datetime
 
 # ========================= CONFIG =========================
@@ -12,7 +11,7 @@ st.set_page_config(
 )
 
 st.title("🦉 Hootsuite Simulator")
-st.markdown("### All-in-One Social Media Management Demo")
+st.markdown("### All-in-One Social Media Management Demo (No Plotly)")
 
 # Sidebar Navigation
 st.sidebar.title("Navigation")
@@ -33,12 +32,6 @@ page = st.sidebar.radio(
 # ========================= HOME =========================
 if page == "🏠 Home":
     st.success("Welcome to the Hootsuite Demo App!")
-    st.markdown("""
-    This is a **single-file** Streamlit application simulating all major Hootsuite features.
-    
-    Use the sidebar to navigate between features.
-    """)
-    
     col1, col2, col3 = st.columns(3)
     with col1:
         st.metric("Posts Scheduled", "47", "↑8")
@@ -46,8 +39,6 @@ if page == "🏠 Home":
         st.metric("Total Reach", "184.2K", "↑12%")
     with col3:
         st.metric("Active Campaigns", "6")
-    
-    st.info("Built with pure Python + Streamlit • One single codebase")
 
 # ========================= PUBLISHING =========================
 elif page == "📅 Publishing & Scheduling":
@@ -119,17 +110,23 @@ elif page == "📊 Analytics & Reporting":
             "Engagement": [3240, 980, 4520, 1870],
             "Clicks": [890, 420, 1560, 310]
         })
-        fig = px.bar(df, x="Platform", y=["Impressions", "Engagement"], barmode="group", title="Performance by Platform")
-        st.plotly_chart(fig, use_container_width=True)
+        st.dataframe(df, use_container_width=True)
+        
+        # Simple bar chart using Streamlit native chart
+        st.subheader("Performance by Platform")
+        st.bar_chart(df.set_index("Platform")[["Impressions", "Engagement"]])
     
     with tab2:
         st.subheader("Best Time to Post")
-        best_times = {"Monday": 65, "Tuesday": 78, "Wednesday": 92, "Thursday": 71, "Friday": 88}
-        st.bar_chart(best_times)
+        best_times = pd.DataFrame({
+            "Day": ["Mon", "Tue", "Wed", "Thu", "Fri"],
+            "Score": [65, 78, 92, 71, 88]
+        })
+        st.bar_chart(best_times.set_index("Day"))
     
     with tab3:
         st.metric("Your Social Performance Score", "87/100", "↑12")
-        st.write("You are outperforming **4 out of 5** tracked competitors this month.")
+        st.success("You are outperforming 4 out of 5 tracked competitors this month.")
 
 # ========================= SOCIAL LISTENING =========================
 elif page == "🔍 Social Listening":
@@ -143,7 +140,7 @@ elif page == "🔍 Social Listening":
         col1, col2 = st.columns(2)
         with col1:
             st.metric("Overall Sentiment", "Positive 68%")
-            st.image("https://picsum.photos/400/250", caption="Word Cloud")
+            st.image("https://picsum.photos/400/250", caption="Sentiment Word Cloud")
         with col2:
             st.subheader("Recent Mentions")
             for i in range(3):
@@ -194,4 +191,4 @@ elif page == "📣 Advertising & Integrations":
 # Footer
 st.sidebar.markdown("---")
 st.sidebar.caption("Hootsuite Simulator • Single File Streamlit App")
-st.sidebar.caption("Built for demonstration purposes")
+st.sidebar.caption("No external plotting libraries required")
