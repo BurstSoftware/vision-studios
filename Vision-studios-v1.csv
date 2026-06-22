@@ -1,0 +1,39 @@
+Role,Duty_Category,Specific_Task
+Studio Owner,Business setup and strategy,Secure funding/investors and purchase or build the facility
+Studio Owner,Business setup and strategy,"Develop branding, long-term business plans, and explore expansion opportunities"
+Studio Owner,Hiring and leadership,Recruit and hire key staff including managers and engineers
+Studio Owner,Hiring and leadership,Oversee overall team direction and make high-level decisions
+Studio Owner,Client acquisition and growth,Market the studio and secure initial and ongoing clients
+Studio Owner,Client acquisition and growth,"Build relationships with labels, artists, and monitor profitability"
+Studio Owner,Financial oversight,Review finances and ensure regulatory compliance
+Studio Manager,Scheduling and coordination,Book sessions and manage calendars
+Studio Manager,Scheduling and coordination,"Coordinate with artists, producers, and labels"
+Studio Manager,Staff management,"Hire, train, supervise staff and handle payroll"
+Studio Manager,Operations and maintenance,Track equipment inventory and arrange repairs/upgrades
+Studio Manager,Client relations and billing,"Handle inquiries, quotes, billing, and client relationships"
+Studio Manager,Marketing and project tracking,Promote the studio and monitor project timelines
+Recording Engineer,Session preparation,Position microphones and set up DAW/console
+Recording Engineer,Tracking and monitoring,Capture tracks and adjust levels in real-time
+Recording Engineer,Editing and basic processing,Edit takes and apply initial EQ/compression
+Recording Engineer,Troubleshooting and collaboration,Resolve technical issues and collaborate with artists
+Recording Engineer,Session delivery,Organize and deliver clean tracks for mixing
+Assistant Engineer,Setup and teardown,Assist with equipment setup and cable management
+Assistant Engineer,Session logistics,Run errands and manage files during sessions
+Assistant Engineer,Documentation and backups,Take notes and handle session backups
+Music Producer,Creative direction,Guide artistic vision and coach performances
+Music Producer,Project management,"Oversee timelines, budgets, and coordination"
+Music Producer,Session oversight,Direct recording and provide feedback
+Music Producer,Post-production supervision,Supervise mixing and mastering
+Mixing Engineer,Balance and processing,"Adjust volumes, EQ, and dynamics"
+Mixing Engineer,Effects and enhancement,"Apply reverb, delay, and automation"
+Mixing Engineer,Iterative revisions,Incorporate feedback and create final mixes
+Mastering Engineer,Final polishing,"Apply subtle EQ, compression, and limiting"
+Mastering Engineer,Consistency and sequencing,Ensure album-wide balance and track order
+Mastering Engineer,Format optimization,Prepare masters for various distribution formats
+Maintenance Technical Engineer,Equipment maintenance,Repair and calibrate studio gear
+Maintenance Technical Engineer,System upgrades,Install and test new equipment
+Maintenance Technical Engineer,Preventive maintenance,Perform routine checks and cleaning
+Session Musician,Performance execution,Learn and perform specific parts accurately
+Session Musician,Adaptability,Take direction and adjust to session needs
+Receptionist Booking Coordinator,Inquiry management,Handle booking inquiries and scheduling
+Receptionist Booking Coordinator,Client greeting,Welcome clients and manage front-of-house
