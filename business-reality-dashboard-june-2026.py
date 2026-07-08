@@ -53,11 +53,12 @@ st.caption("All figures reflect current liabilities because no moneys has been p
 st.divider()
 
 # ==================== TABS ====================
-tab1, tab2, tab3, tab4 = st.tabs([
+tab1, tab2, tab3, tab4, tab5 = st.tabs([
     "📋 Executive Overview", 
     "👥 Team Status", 
     "💰 Financial Breakdown", 
-    "🚀 Recommended Actions"
+    "🚀 Recommended Actions",
+    "📄 Source Document"
 ])
 
 # ==================== TAB 1: EXECUTIVE OVERVIEW ====================
@@ -75,7 +76,7 @@ with tab1:
         "**Colin status** — Not considered a strong long-term cultural or strategic fit with the team. He is completing work on a record and will be parting ways at the end of June 2026.",
         "**Cash flow** — **$0** (no revenue).",
         "**Overall position** — **Only liabilities** on the books with no offsetting assets or revenue streams currently active.",
-        "**New team additions** — Tyler (Editor & Audio Technician) and a Social Media Expert (former day laborer) have been added to strengthen post-production and finally launch digital presence."
+        "**New team additions** — Tyler (Editor & Audio Technician) and a Social Media Expert (former day laborer) have been added."
     ]
     
     for fact in facts:
@@ -90,20 +91,12 @@ with tab2:
     team_data = {
         "Name": ["Jason", "Dan", "Ryan", "Zack", "Colin", "Social Media Expert*"],
         "Title": [
-            "Owner",
-            "President",
-            "A&R (Artists and Repertoire)",
-            "Videographer",
-            "Engineer / Producer",
-            "Social Media Expert (former day laborer)"
+            "Owner", "President", "A&R (Artists and Repertoire)", "Videographer",
+            "Engineer / Producer", "Social Media Expert (former day laborer)"
         ],
         "Current Status": [
-            "Absent / Not Engaged",
-            "Not On-Site",
-            "Available",
-            "Available",
-            "Departing June 30",
-            "New Addition"
+            "Absent / Not Engaged", "Not On-Site", "Available", "Available",
+            "Departing June 30", "New Addition"
         ],
         "Key Details": [
             "No active involvement in operations or leadership",
@@ -126,14 +119,14 @@ with tab2:
             return "background-color: #ebf8ff"
     
     styled_df = df_team.style.map(color_status, subset=["Current Status"])
-    
     st.dataframe(styled_df, use_container_width=True, hide_index=True)
+    
     st.caption("* Social Media Expert's actual name is a placeholder. Tyler is accounted for financially but removed from this overview.")
 
     with st.expander("📖 What is A&R (Artists and Repertoire)?"):
         st.info("""
-        **A&R (Artists and Repertoire)** is the department within a record label or music publisher responsible for scouting talent and overseeing the artistic development of recording artists. 
-        They act as the vital bridge between the creative vision of the musician and the commercial goals of the label.
+        **A&R (Artists and Repertoire)** is the department responsible for scouting talent and overseeing the artistic development of recording artists. 
+        They act as the vital bridge between creative vision and commercial goals.
         """)
 
 # ==================== TAB 3: FINANCIAL BREAKDOWN ====================
@@ -143,12 +136,8 @@ with tab3:
     
     st.markdown("### Total Current Liabilities Breakdown")
     liabilities_data = {
-        "Item": [
-            "Labor-related accrued liabilities (6 people)",
-            "Tools & equipment unpaid liability",
-            "Amounts due for products produced (sound recordings)",
-            "TOTAL CURRENT LIABILITIES"
-        ],
+        "Item": ["Labor-related accrued liabilities (6 people)", "Tools & equipment unpaid liability",
+                 "Amounts due for products produced (sound recordings)", "TOTAL CURRENT LIABILITIES"],
         "Amount": ["$146,580", "$20,000", "$146,580", "$313,160"],
         "Notes": [
             "Unpaid / accrued since Jan 1, 2026 — no cash paid as agreed",
@@ -172,7 +161,7 @@ with tab3:
     
     labor_data = {
         "Team Member": ["Dan", "Ryan", "Zack", "Colin", "Tyler", "Social Media Expert (Alex*)"],
-        "Role": ["President", "A&R (Artists and Repertoire)", "Videographer", "Engineer / Producer", 
+        "Role": ["President", "A&R (Artists and Repertoire)", "Videographer", "Engineer / Producer",
                  "Editor & Audio Technician", "Social Media Expert"],
         "Weekly Cost": ["$1,000"] * 6,
         "Weeks": ["24.43"] * 6,
@@ -189,17 +178,17 @@ with tab4:
     
     actions = [
         ("1. Ownership & Leadership Decision", 
-         "Jason and Dan must clarify commitment level and presence. Either establish consistent on-site leadership with a dedicated office for Dan, or formally appoint an acting operator."),
+         "Jason and Dan must clarify commitment level and presence. Either establish consistent on-site leadership or formally appoint an acting operator."),
         ("2. Colin Transition Plan (Urgent — by June 30)", 
-         "Decide whether to purchase Colin's gear/equipment, negotiate a transition of ongoing projects, or accept the loss of studio capability."),
+         "Decide whether to purchase Colin's gear/equipment, negotiate transition, or accept loss of studio capability."),
         ("3. Digital Presence Launch (Within 7–14 days)", 
-         "Leverage the newly added Social Media Expert to immediately deploy a minimal viable website and active social channels."),
+         "Leverage the Social Media Expert to immediately deploy website and active social channels."),
         ("4. Define the Business Clearly", 
-         "Write a one-paragraph positioning statement: What do we actually sell, to whom, and why are we different?"),
+         "Write a one-paragraph positioning statement: What do we sell, to whom, and why are we different?"),
         ("5. 90-Day Revenue Plan or Pause Decision", 
-         "Create a realistic plan to book paying work within 90 days. If not feasible, consider a structured pause, asset sale, or wind-down."),
+         "Create a realistic plan to book paying work within 90 days or consider pause/wind-down."),
         ("6. Financial Cleanup", 
-         "Compile a full list of actual liabilities and outstanding receivables before any investor/partner discussions.")
+         "Compile full list of liabilities and receivables before any external discussions.")
     ]
     
     for title, desc in actions:
@@ -207,10 +196,23 @@ with tab4:
             st.write(desc)
     
     st.divider()
-    st.error("""
-    **FINAL NOTE**: This assessment is provided as a factual planning tool. 
-    The business, in its current configuration and activity level, is not generating value and is accumulating loss.
+    st.error("**FINAL NOTE**: The business is accumulating loss. Decisive action is required immediately.")
+
+# ==================== TAB 5: SOURCE DOCUMENT ====================
+with tab5:
+    st.subheader("📄 Original Source Document", divider="blue")
+    st.markdown("### Business Assessment & Net Loss Report – June 2026")
+    
+    pdf_raw = "https://raw.githubusercontent.com/BurstSoftware/vision-studios/main/Business_Assessment_Net_Loss_Report_June2026.pdf"
+    pdf_blob = "https://github.com/BurstSoftware/vision-studios/blob/main/Business_Assessment_Net_Loss_Report_June2026.pdf"
+    
+    st.markdown(f"""
+    **Direct PDF** → [Open / Download]({pdf_raw})  
+    **GitHub Page** → [View on GitHub]({pdf_blob})
     """)
+    
+    st.info("💡 Use the **Direct PDF** link for the best viewing and downloading experience.")
+    st.caption("This interactive dashboard was built from the above report.")
 
 # ==================== SIDEBAR ====================
 with st.sidebar:
@@ -220,12 +222,11 @@ with st.sidebar:
     - Team Status
     - Financial Breakdown
     - Recommended Actions
+    - Source Document
     """)
     st.divider()
     st.caption("**Data Period**: January 1 – June 20, 2026")
     st.caption("**Rate Used**: $25/person/hour × 40 hrs/week")
     st.caption("**Last Updated**: June 22, 2026")
-    st.divider()
-    st.caption("This dashboard compiles the Business Reality Assessment into an interactive format.")
 
-st.sidebar.info("To run locally:\n`streamlit run business_reality_dashboard.py`")
+st.sidebar.info("Run with:\n`streamlit run business_reality_dashboard.py`")
