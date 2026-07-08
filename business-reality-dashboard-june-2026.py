@@ -88,26 +88,35 @@ with tab2:
     st.subheader("Detailed Team Status — June 22, 2026", divider="blue")
     
     team_data = {
-        "Name": ["Jason", "Dan", "Ryan", "Zack", "Colin", "Tyler", "Social Media Expert*"],
-        "Title": ["Owner", "President", "A&R (Artists and Repertoire)", "Videographer", 
-                  "Engineer / Producer", "Editor & Audio Technician", 
-                  "Social Media Expert (former day laborer)"],
-        "Current Status": ["Absent / Not Engaged", "Not On-Site", "Available", "Available", 
-                          "Departing June 30", "New Addition", "New Addition"],
+        "Name": ["Jason", "Dan", "Ryan", "Zack", "Colin", "Social Media Expert*"],
+        "Title": [
+            "Owner",
+            "President",
+            "A&R (Artists and Repertoire)",
+            "Videographer",
+            "Engineer / Producer",
+            "Social Media Expert (former day laborer)"
+        ],
+        "Current Status": [
+            "Absent / Not Engaged",
+            "Not On-Site",
+            "Available",
+            "Available",
+            "Departing June 30",
+            "New Addition"
+        ],
         "Key Details": [
             "No active involvement in operations or leadership",
             "No dedicated office; not running meetings; not meeting new talent",
             "Scouting talent & overseeing artistic development of recording artists — vital bridge between creative vision and commercial goals",
             "Core creative role; activity level not detailed",
             "Owns gear & music equipment; not strong team fit; finishing record",
-            "Recently joined to strengthen editing, audio, and post-production capabilities",
             "*Name placeholder — recently joined to build website, social media presence, and online visibility"
         ]
     }
     
     df_team = pd.DataFrame(team_data)
     
-    # Fixed styling (applymap → map)
     def color_status(val):
         if "Absent" in str(val) or "Not On-Site" in str(val) or "Departing" in str(val):
             return "background-color: #fed7d7; color: #c53030"
@@ -119,13 +128,12 @@ with tab2:
     styled_df = df_team.style.map(color_status, subset=["Current Status"])
     
     st.dataframe(styled_df, use_container_width=True, hide_index=True)
-    st.caption("* Social Media Expert's actual name is a placeholder. Please provide the correct name for updates.")
+    st.caption("* Social Media Expert's actual name is a placeholder. Tyler is accounted for financially but removed from this overview.")
 
     with st.expander("📖 What is A&R (Artists and Repertoire)?"):
         st.info("""
         **A&R (Artists and Repertoire)** is the department within a record label or music publisher responsible for scouting talent and overseeing the artistic development of recording artists. 
-        
-        They act as the **vital bridge between the creative vision of the musician and the commercial goals of the label**.
+        They act as the vital bridge between the creative vision of the musician and the commercial goals of the label.
         """)
 
 # ==================== TAB 3: FINANCIAL BREAKDOWN ====================
@@ -133,9 +141,14 @@ with tab3:
     st.subheader("Financial Reality — Current Liabilities", divider="blue")
     st.error("**Important**: No moneys has been paid as agreed for the products produced. All items below are classified as **current liabilities**.")
     
+    st.markdown("### Total Current Liabilities Breakdown")
     liabilities_data = {
-        "Item": ["Labor-related accrued liabilities (6 people)", "Tools & equipment unpaid liability", 
-                 "Amounts due for products produced (sound recordings)", "TOTAL CURRENT LIABILITIES"],
+        "Item": [
+            "Labor-related accrued liabilities (6 people)",
+            "Tools & equipment unpaid liability",
+            "Amounts due for products produced (sound recordings)",
+            "TOTAL CURRENT LIABILITIES"
+        ],
         "Amount": ["$146,580", "$20,000", "$146,580", "$313,160"],
         "Notes": [
             "Unpaid / accrued since Jan 1, 2026 — no cash paid as agreed",
@@ -146,7 +159,6 @@ with tab3:
     }
     
     df_liab = pd.DataFrame(liabilities_data)
-    
     def highlight_total(row):
         if row["Item"] == "TOTAL CURRENT LIABILITIES":
             return ["background-color: #fed7d7; font-weight: bold"] * len(row)
@@ -160,7 +172,7 @@ with tab3:
     
     labor_data = {
         "Team Member": ["Dan", "Ryan", "Zack", "Colin", "Tyler", "Social Media Expert (Alex*)"],
-        "Role": ["President", "A&R", "Videographer", "Engineer / Producer", 
+        "Role": ["President", "A&R (Artists and Repertoire)", "Videographer", "Engineer / Producer", 
                  "Editor & Audio Technician", "Social Media Expert"],
         "Weekly Cost": ["$1,000"] * 6,
         "Weeks": ["24.43"] * 6,
@@ -169,7 +181,7 @@ with tab3:
     
     df_labor = pd.DataFrame(labor_data)
     st.dataframe(df_labor, use_container_width=True, hide_index=True)
-    st.caption("*Name placeholder for Social Media Expert. Calculation period: January 1 – June 20, 2026 (24.43 weeks)")
+    st.caption("Tyler is included in financial calculations as he is still part of the current labor cost.")
 
 # ==================== TAB 4: RECOMMENDED ACTIONS ====================
 with tab4:
@@ -179,7 +191,7 @@ with tab4:
         ("1. Ownership & Leadership Decision", 
          "Jason and Dan must clarify commitment level and presence. Either establish consistent on-site leadership with a dedicated office for Dan, or formally appoint an acting operator."),
         ("2. Colin Transition Plan (Urgent — by June 30)", 
-         "Decide whether to purchase Colin's gear/equipment, negotiate a transition of ongoing projects, or accept the loss of studio capability. Document any agreements in writing."),
+         "Decide whether to purchase Colin's gear/equipment, negotiate a transition of ongoing projects, or accept the loss of studio capability."),
         ("3. Digital Presence Launch (Within 7–14 days)", 
          "Leverage the newly added Social Media Expert to immediately deploy a minimal viable website and active social channels."),
         ("4. Define the Business Clearly", 
@@ -197,8 +209,7 @@ with tab4:
     st.divider()
     st.error("""
     **FINAL NOTE**: This assessment is provided as a factual planning tool. 
-    The business, in its current configuration, is accumulating loss. 
-    Decisive action on leadership, digital visibility, Colin transition, and revenue strategy is required immediately.
+    The business, in its current configuration and activity level, is not generating value and is accumulating loss.
     """)
 
 # ==================== SIDEBAR ====================
@@ -217,4 +228,4 @@ with st.sidebar:
     st.divider()
     st.caption("This dashboard compiles the Business Reality Assessment into an interactive format.")
 
-st.sidebar.info("Run locally with:\n`streamlit run business_reality_dashboard.py`")
+st.sidebar.info("To run locally:\n`streamlit run business_reality_dashboard.py`")
